@@ -33,6 +33,14 @@ public class UserService {
         return user;
     }
 
+    public User changePassword(final String userName, final String oldPassword, final String newPassword) {
+        final User user = this.fetchUser(userName);
+        //TODO: Validate old password
+        user.setPassword(newPassword);
+        userRepository.save(user);
+        return user;
+    }
+
     public User fetchUser(final String userName) {
         return userRepository.findByUid(userName);
     }

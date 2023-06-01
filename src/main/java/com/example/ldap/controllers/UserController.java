@@ -29,6 +29,16 @@ public class UserController {
         return ResponseEntity.ok(userDetails);
     }
 
+    @PostMapping("/users/current/password")
+    public ResponseEntity changePassword(final String oldPassword, final String newPassword, final Principal principal) {
+        final UsernamePasswordAuthenticationToken authToken = (UsernamePasswordAuthenticationToken) principal;
+        final String userName = ((LdapUserDetailsImpl) authToken.getPrincipal()).getUsername();
+        final User user = userService.changePassword(userName, oldPassword, newPassword);
+        return ResponseEntity.ok(Collections.singletonMap("username", user.getUid()));
+    }
+
+
+
     @GetMapping("/users")
     public ResponseEntity getUsers() {
         final List<String> users = userService.fetchAllUsers();

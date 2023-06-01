@@ -51,9 +51,9 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/users").hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(customizer -> customizer
-                        .defaultSuccessUrl("/api/users/current"))
-                .exceptionHandling(handling -> handling
-                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));
+                        .defaultSuccessUrl("/api/users/current"));
+//                .exceptionHandling(handling -> handling
+//                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));
 
         return http.build();
     }

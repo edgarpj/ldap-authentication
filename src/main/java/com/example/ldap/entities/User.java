@@ -26,7 +26,7 @@ public class User {
     @Attribute(name = "sn")
     private String name;
     @Attribute(name = "uid")
-    @DnAttribute(value = "uid", index = 0)
+    @DnAttribute(value = "uid", index = 1)
     private String uid;
     private @Attribute(name = "userPassword") String password;
 }
